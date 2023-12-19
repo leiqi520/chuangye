@@ -1,10 +1,17 @@
 <script setup>
- let username = ''
- let password = ''
-const onSubmit = (values) => {
-  console.log('submit', values)
-}
+  import {ref} from 'vue'
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
+
+  let username = ref('')
+  let password = ref('')
+  const onSubmit = () => {
+    router.replace({ path: '/home' })
+  }
+
+
 </script>
+
 <template>
   <van-nav-bar title="登录" />
   <van-form @submit="onSubmit">
@@ -30,8 +37,13 @@ const onSubmit = (values) => {
     </div>
   </van-form>
 </template>
-<style>
+
+<style scoped>
 .item {
   margin-top: 50px !important;
 }
+.van-nav-bar,.van-form  {
+    margin-top: 2rem;
+}
+
 </style>
